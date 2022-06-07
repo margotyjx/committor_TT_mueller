@@ -214,9 +214,10 @@ class orth_pab:
 
 
 # +
-# pab = orth_pab(1/20,4,5)
-# psi_a,ak = pab.orth_p(2)
-# psi_b,bk = pab.orth_ab(sigma=0.05,c=1)
+# #beta,d,max_pol_deg,max_pol_deg_px
+# pab = orth_pab(1/20,2,25,109)
+# psi_a,ak = pab.orth_p(1)
+# # psi_b,bk = pab.orth_ab(sigma=0.05,c=1)
 
 # print(np.shape(ak))
 

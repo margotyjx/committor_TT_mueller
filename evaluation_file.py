@@ -57,7 +57,7 @@ Testing points in 2D and plot the estimation by the computed result for T = 30
 
 # +
 import pandas as pd
-FD_file = pd.read_excel('FEMdata_T100_uniform.xlsx')
+FD_file = pd.read_excel('FEMdata_T10_uniform.xlsx')
 
 points_x = pd.DataFrame(FD_file['X'])
 points_y = pd.DataFrame(FD_file['Y'])
@@ -85,7 +85,7 @@ new_target = np.array(new_target)
 Test_data = np.hstack((new_pos,new_target))
 Test_data_dataframe= pd.DataFrame(Test_data,columns=['X','Y','committor']) #convert to a dataframe
 
-Test_data_dataframe.to_excel('test_data.xlsx',index=False) #save to file
+Test_data_dataframe.to_excel('test_data_T10.xlsx',index=False) #save to file
 
 # +
 plt.scatter(new_pos[:,0],new_pos[:,1],c = new_target, s = 20)
@@ -98,12 +98,8 @@ plt.title('approximation by FEM')
 # plt.ylabel('committor function')
 # plt.savefig('2D_beta5.png')
 # plt.show()
-# -
-
-
-
 # +
-beta = 1/100
+beta = 1/30
 a1 = -1.5
 a2 = 1
 b1 = -0.5
@@ -134,6 +130,10 @@ print(relative_error_2D)
 square_errer_2D = np.square(err_vec)
 RMSE_2D = np.sqrt(square_errer_2D.mean())
 print(RMSE_2D)
+
+# MAE
+MAE = np.abs(err_vec).mean()
+print(MAE)
 
 
 

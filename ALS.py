@@ -394,7 +394,7 @@ class ALS_update:
         ## for iteration, check if conditions are met
         
         for itr in range(max_iter):
-            err = self.calc_error()
+#             err = self.calc_error()
 #             if err < 0.005:
 #                 print('error less than 0.005, and error is ',err)
 # #                 break
@@ -461,7 +461,6 @@ class ALS_update:
                     op = op_Hk+ self.rho*op_A + self.rho*op_B
                     
                     sol = np.linalg.solve(op, rhs)
-                    print('cond of op_Hk', np.linalg.cond(op_Hk))
                     print('pos 0 error: ', np.linalg.norm(op@sol - rhs))
                     print('relative error: ', np.linalg.norm(op@sol - rhs)/np.linalg.norm(rhs)*np.linalg.cond(op))
 
@@ -533,7 +532,6 @@ class ALS_update:
                     op = op_Hk+self.rho*op_A + self.rho*op_B
                     
                     sol = np.linalg.solve(op, rhs)
-                    print('cond of op_Hk: ', np.linalg.cond(op_Hk))
                     
                     print('pos 1 error: ', np.linalg.norm(op@sol - rhs))
                     print('relative error: ', np.linalg.norm(op@sol - rhs)/np.linalg.norm(rhs)*np.linalg.cond(op))
@@ -628,7 +626,7 @@ class ALS_update:
             pickle.dump(self.Q, open("Q", 'wb'))
             
             
-            FD_file = pd.read_excel('test_data.xlsx')
+            FD_file = pd.read_excel('test_data_T10.xlsx')
 
             points_x = pd.DataFrame(FD_file['X'])
             points_y = pd.DataFrame(FD_file['Y'])
@@ -664,7 +662,7 @@ class ALS_update:
 ## beta,d,max_pol_deg,max_pol_deg_px,rank,rho,retrieve
 import time
 start = time.time()
-Als = ALS_update(1/100,2,25,25,1,50,False)
+Als = ALS_update(1/10,2,25,109,10,50,False)
 Als.solve(20)
 
 # +
